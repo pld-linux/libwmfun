@@ -2,7 +2,7 @@ Summary:	Library that provides function textures for WindowMaker
 Summary(pl):	Biblioteka dostarczaj±ca funkcje tekstur dla WindowMakera
 Name:		libwmfun
 Version:	0.0.1
-Release:	2
+Release:	3
 Group:		X11/Libraries
 Group(pl):	X11/Biblioteki
 Copyright:	GPL
@@ -24,13 +24,26 @@ libwmfun jest bibliotek± dla WindowMakera, która wyposa¿a go w funkcje
 tworzenia tekstur. Wiêcej informacji znajdziesz po zainstalowaniu tego
 pakietu w %{_defaultdocdir}/%{name}-%{version}/README.
 
+%package devel
+Summary:	Header files etc to develop libwmfun applications
+Summary(pl):	Pliki nag³ówkowe i inne do libwmfun
+Group:		X11/Libraries
+Group(pl):	X11/Biblioteki
+Requires:	%{name} = %{version}
+
+%description devel
+Header files etc to develop libwmfun applications.
+
+%description -l pl devel
+Pliki nag³ówkowe i inne do libwmfun.
+
 %prep
 %setup -q
 
 %build
-CFLAGS="$RPM_OPT_FLAGS -I/usr/X11R6/include" LDFLAGS="-s" \
-./configure %{_target_platform} \
-	--prefix=%{_prefix} \
+CFLAGS="$RPM_OPT_FLAGS -I/usr/X11R6/include"; export CFLAGS
+LDFLAGS="-s"; export LDFLAGS
+%configure \
 	--disable-static
 make
 
@@ -52,10 +65,18 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %doc {README,ChangeLog,AUTHORS,NEWS}.gz WMFun-demo.style
-%attr(755,root,root) %{_libdir}/lib*.so*
-%{_libdir}/libwmfun.la
+%attr(755,root,root) %{_libdir}/lib*.so.*.*
+
+%files devel
+%attr(755,root,root) %{_libdir}/lib*.so
+%{_libdir}/lib*.la
 
 %changelog
+* Sat Jul 10 1999 Tomasz K³oczko <kloczek@rudy.mif.pg.gda.pl>
+  [0.1.1-3]
+- added devel subpackage,
+- added using %%configure macro.
+
 * Tue Jul 6 1999 Piotr Czerwiñski <pius@pld.org.pl> 
   [0.1.1-2]
 - rewritten for PLD use,
