@@ -7,8 +7,8 @@ Group:		X11/Libraries
 Group(pl):	X11/Biblioteki
 Copyright:	GPL
 Source:		ftp://ftp.windowmaker.org/pub/beta/srcs/%{name}-%{version}.tar.gz
-BuildPrereq:	XFree86-devel
-BuildPrereq:	WindowMaker-devel
+BuildRequires:	XFree86-devel
+BuildRequires:	WindowMaker-devel
 Requires:	WindowMaker
 BuildRoot:   	/tmp/%{name}-%{version}-root
 
