@@ -2,7 +2,7 @@ Summary:	Library that provides function textures for WindowMaker
 Summary(pl):	Biblioteka dostarczaj±ca funkcje tekstur dla WindowMakera
 Name:		libwmfun
 Version:	0.0.4
-Release:	3
+Release:	4
 License:	GPL
 Group:		X11/Libraries
 Source0:	ftp://ftp.windowmaker.org/pub/libs/%{name}-%{version}.tar.gz
