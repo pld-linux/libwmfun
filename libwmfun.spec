@@ -55,7 +55,6 @@ Biblioteka statyczna libwmfun.
 
 %build
 CFLAGS="$RPM_OPT_FLAGS -I%{_includedir}"; export CFLAGS
-LDFLAGS="-s"; export LDFLAGS
 %configure \
 	--enable-static
 %{__make}
@@ -64,8 +63,6 @@ LDFLAGS="-s"; export LDFLAGS
 rm -rf $RPM_BUILD_ROOT
 
 %{__make} install DESTDIR=$RPM_BUILD_ROOT
-
-strip --strip-unneeded $RPM_BUILD_ROOT%{_libdir}/lib*.so.*.*
 
 gzip -9nf README ChangeLog AUTHORS NEWS
 
