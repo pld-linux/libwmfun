@@ -27,8 +27,8 @@ pakietu w %{_defaultdocdir}/%{name}-%{version}/README.
 %package devel
 Summary:	Header files etc to develop libwmfun applications
 Summary(pl):	Pliki nag³ówkowe i inne do libwmfun
-Group:		X11/Libraries
-Group(pl):	X11/Biblioteki
+Group:		X11/Development/Libraries
+Group(pl):	X11/Programowanie/Biblioteki
 Requires:	%{name} = %{version}
 
 %description devel
@@ -37,6 +37,19 @@ Header files etc to develop libwmfun applications.
 %description -l pl devel
 Pliki nag³ówkowe i inne do libwmfun.
 
+%package static
+Summary:	Static libwmfun library
+Summary(pl):	Biblioteka statyczna libwmfun
+Group:		X11/Development/Libraries
+Group(pl):	X11/Programowanie/Biblioteki
+Requires:	%{name}-devel = %{version}
+
+%description static
+Static libwmfun library.
+
+%description -l pl static
+Biblioteka statyczna libwmfun.
+
 %prep
 %setup -q
 
@@ -44,7 +57,7 @@ Pliki nag³ówkowe i inne do libwmfun.
 CFLAGS="$RPM_OPT_FLAGS -I/usr/X11R6/include"; export CFLAGS
 LDFLAGS="-s"; export LDFLAGS
 %configure \
-	--disable-static
+	--enable-static
 make
 
 %install
@@ -69,4 +82,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files devel
 %attr(755,root,root) %{_libdir}/lib*.so
-%{_libdir}/lib*.la
+%attr(755,root,root) %{_libdir}/lib*.la
+
+%files static
+%attr(644,root,root) %{_libdir}/lib*.a
