@@ -58,7 +58,7 @@ CFLAGS="$RPM_OPT_FLAGS -I%{_includedir}"; export CFLAGS
 LDFLAGS="-s"; export LDFLAGS
 %configure \
 	--enable-static
-make
+%{__make}
 
 %install
 rm -rf $RPM_BUILD_ROOT
