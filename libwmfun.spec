@@ -2,11 +2,12 @@ Summary:	Library that provides function textures for WindowMaker
 Summary(pl):	Biblioteka dostarczaj±ca funkcje tekstur dla WindowMakera
 Name:		libwmfun
 Version:	0.0.4
-Release:	1
+Release:	2
 License:	GPL
 Group:		X11/Libraries
 Source0:	ftp://ftp.windowmaker.org/pub/libs/%{name}-%{version}.tar.gz
 # Source0-md5:	af1ad49bada4b8f0df9377a133f109c4
+Patch0:		%{name}-fix.patch
 BuildRequires:	XFree86-devel
 BuildRequires:	WindowMaker-devel >= 0.63.1
 BuildRequires:	autoconf
@@ -15,22 +16,23 @@ BuildRequires:	freetype-devel >= 2.0.0
 BuildRequires:	libtool
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
-
 %description
 libwmfun is a library that provides function textures for WindowMaker.
-For more info see %{_defaultdocdir}/%{name}-%{version}/README after
+For more info see %{_defaultdocdir}/%{name}-%{version}/README* after
 installing this package.
 
 %description -l pl
 libwmfun jest bibliotek± dla WindowMakera, która wyposa¿a go w funkcje
-tworzenia tekstur. Wiêcej informacji znajdziesz po zainstalowaniu tego
-pakietu w %{_defaultdocdir}/%{name}-%{version}/README.
+tworzenia tekstur. Wiêcej informacji mo¿na znale¼æ po zainstalowaniu
+tego pakietu w %{_defaultdocdir}/%{name}-%{version}/README*.
 
 %package devel
 Summary:	Header files etc to develop libwmfun applications
 Summary(pl):	Pliki nag³ówkowe i inne do libwmfun
 Group:		X11/Development/Libraries
-Requires:	%{name} = %{version}
+Requires:	%{name} = %{version}-%{release}
+Requires:	WindowMaker-devel >= 0.63.1
+Requires:	freetype-devel >= 2.0.0
 
 %description devel
 Header files etc to develop libwmfun applications.
@@ -42,7 +44,7 @@ Pliki nag³ówkowe i inne do libwmfun.
 Summary:	Static libwmfun library
 Summary(pl):	Biblioteka statyczna libwmfun
 Group:		X11/Development/Libraries
-Requires:	%{name}-devel = %{version}
+Requires:	%{name}-devel = %{version}-%{release}
 
 %description static
 Static libwmfun library.
@@ -52,22 +54,24 @@ Biblioteka statyczna libwmfun.
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
-rm -f missing
 %{__libtoolize}
 %{__aclocal}
 %{__autoconf}
 %{__automake}
-CFLAGS="%{rpmcflags} -I%{_includedir} -I/usr/include/freetype2"
+CFLAGS="%{rpmcflags} -I/usr/include/freetype2"
 %configure \
 	--enable-static
-%{__make}
+%{__make} \
+	LXLIBDIR="-L/usr/X11R6/%{_lib}"
 
 %install
 rm -rf $RPM_BUILD_ROOT
 
-%{__make} install DESTDIR=$RPM_BUILD_ROOT
+%{__make} install \
+	DESTDIR=$RPM_BUILD_ROOT
 
 %clean
 rm -rf $RPM_BUILD_ROOT
