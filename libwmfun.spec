@@ -58,7 +58,7 @@ Biblioteka statyczna libwmfun.
 %setup -q
 
 %build
-CFLAGS="%{!?debug:$RPM_OPT_FLAGS}%{?debug:-O0 -g} -I%{_includedir}"
+CFLAGS="%{rpmcflags} -I%{_includedir}"
 %configure \
 	--enable-static
 %{__make}
