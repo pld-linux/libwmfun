@@ -70,14 +70,3 @@ rm -rf $RPM_BUILD_ROOT
 %files devel
 %attr(755,root,root) %{_libdir}/lib*.so
 %{_libdir}/lib*.la
-
-%changelog
-* Sat Jul 10 1999 Tomasz K³oczko <kloczek@rudy.mif.pg.gda.pl>
-  [0.1.1-3]
-- added devel subpackage,
-- added using %%configure macro.
-
-* Tue Jul 6 1999 Piotr Czerwiñski <pius@pld.org.pl> 
-  [0.1.1-2]
-- rewritten for PLD use,
-- based on spec file by Ryan Weaver <ryanw@infohwy.com>.
