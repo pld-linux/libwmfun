@@ -5,8 +5,8 @@ Version:	0.0.2
 Release:	1
 Group:		X11/Libraries
 Group(pl):	X11/Biblioteki
-Copyright:	GPL
-Source:		ftp://ftp.windowmaker.org/pub/beta/srcs/%{name}-%{version}.tar.gz
+License:	GPL
+Source0:	ftp://ftp.windowmaker.org/pub/beta/srcs/%{name}-%{version}.tar.gz
 BuildRequires:	XFree86-devel
 BuildRequires:	WindowMaker-devel
 Requires:	WindowMaker
@@ -16,7 +16,7 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
 libwmfun is a library that provides function textures for WindowMaker.
-For more info see %{_defaultdocdir}/%{name}-%{version}/README after 
+For more info see %{_defaultdocdir}/%{name}-%{version}/README after
 installing this package.
 
 %description -l pl
@@ -54,7 +54,7 @@ Biblioteka statyczna libwmfun.
 %setup -q
 
 %build
-CFLAGS="$RPM_OPT_FLAGS -I/usr/X11R6/include"; export CFLAGS
+CFLAGS="$RPM_OPT_FLAGS -I%{_includedir}"; export CFLAGS
 LDFLAGS="-s"; export LDFLAGS
 %configure \
 	--enable-static
@@ -81,8 +81,10 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/lib*.so.*.*
 
 %files devel
+%defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/lib*.so
 %attr(755,root,root) %{_libdir}/lib*.la
 
 %files static
-%attr(644,root,root) %{_libdir}/lib*.a
+%defattr(644,root,root,755)
+%{_libdir}/lib*.a
