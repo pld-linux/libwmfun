@@ -56,7 +56,7 @@ Biblioteka statyczna libwmfun.
 %build
 rm -f missing
 %{__libtoolize}
-aclocal
+%{__aclocal}
 %{__autoconf}
 %{__automake}
 CFLAGS="%{rpmcflags} -I%{_includedir} -I/usr/include/freetype2"
