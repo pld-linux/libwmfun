@@ -1,0 +1,34 @@
+--- libwmfun-0.0.4/libwmfun/drawstring.c.orig	2001-07-29 21:18:48.000000000 +0200
++++ libwmfun-0.0.4/libwmfun/drawstring.c	2004-03-31 22:57:36.746751744 +0200
+@@ -1,10 +1,11 @@
+-#include <proplist.h>
++#include <WINGs/proplist-compat.h>
+ #include <WINGs/WINGs.h>
+ #include <WINGs/WINGsP.h>
+ #include "generic.h"
+ 
+ #ifdef USE_FREETYPE
+-#include <freetype/freetype.h>
++#include <ft2build.h>
++#include FT_FREETYPE_H
+ #endif
+ 
+ #define MAX_GLYPHS 256
+--- libwmfun-0.0.4/libwmfun/Makefile.am.orig	2000-12-07 00:40:07.000000000 +0100
++++ libwmfun-0.0.4/libwmfun/Makefile.am	2004-03-31 23:00:25.100158136 +0200
+@@ -12,3 +12,4 @@
+ 		wave.c \
+ 		drawstring.c
+ 
++libwmfun_la_LIBADD = -lWINGs -lwraster -lm $(LXLIBDIR) -lX11
+--- libwmfun-0.0.4/configure.in.orig	2000-12-03 23:18:20.000000000 +0100
++++ libwmfun-0.0.4/configure.in	2004-03-31 23:01:23.225321768 +0200
+@@ -17,7 +17,7 @@
+ 
+     if test "x$ac_cv_lib_freetype_FT_Init_FreeType" = xyes; then
+         LIBS="$LIBS -lfreetype"
+-        AC_DEFINE(USE_FREETYPE)
++        AC_DEFINE(USE_FREETYPE,,[whether to use freetype library])
+     fi
+ fi
+ 
