@@ -69,8 +69,6 @@ rm -rf $RPM_BUILD_ROOT
 
 %{__make} install DESTDIR=$RPM_BUILD_ROOT
 
-gzip -9nf README ChangeLog AUTHORS NEWS
-
 %clean
 rm -rf $RPM_BUILD_ROOT
 
@@ -79,7 +77,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc *.gz WMFun-demo.style
+%doc README ChangeLog AUTHORS NEWS WMFun-demo.style
 %attr(755,root,root) %{_libdir}/lib*.so.*.*
 
 %files devel
