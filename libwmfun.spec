@@ -57,8 +57,8 @@ Biblioteka statyczna libwmfun.
 rm -f missing
 libtoolize --copy --force
 aclocal
-autoconf
-automake -a -c -f
+%{__autoconf}
+%{__automake}
 CFLAGS="%{rpmcflags} -I%{_includedir} -I/usr/include/freetype2"
 %configure \
 	--enable-static
