@@ -14,7 +14,6 @@ BuildRequires:	freetype-devel >= 2.0.0
 BuildRequires:	libtool
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
-%define 	_prefix 	/usr/X11R6
 
 %description
 libwmfun is a library that provides function textures for WindowMaker.
