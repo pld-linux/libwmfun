@@ -29,7 +29,7 @@ pakietu w %{_defaultdocdir}/%{name}-%{version}/README.
 
 %build
 CFLAGS="$RPM_OPT_FLAGS -I/usr/X11R6/include" LDFLAGS="-s" \
-./configure \
+./configure %{_target_platform} \
 	--prefix=%{_prefix} \
 	--disable-static
 make
