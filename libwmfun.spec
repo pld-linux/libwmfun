@@ -2,13 +2,15 @@ Summary:	Library that provides function textures for WindowMaker
 Summary(pl):	Biblioteka dostarczaj±ca funkcje tekstur dla WindowMakera
 Name:		libwmfun
 Version:	0.0.2
-Release:	1
+Release:	2
 Group:		X11/Libraries
+Group(de):	X11/Libraries
+Group(es):	X11/Bibliotecas
 Group(pl):	X11/Biblioteki
 License:	GPL
 Source0:	ftp://ftp.windowmaker.org/pub/beta/srcs/%{name}-%{version}.tar.gz
 BuildRequires:	XFree86-devel
-BuildRequires:	WindowMaker-devel
+BuildRequires:	WindowMaker-devel >= 0.63.1
 Requires:	WindowMaker
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -28,6 +30,7 @@ pakietu w %{_defaultdocdir}/%{name}-%{version}/README.
 Summary:	Header files etc to develop libwmfun applications
 Summary(pl):	Pliki nag³ówkowe i inne do libwmfun
 Group:		X11/Development/Libraries
+Group(de):	X11/Entwicklung/Libraries
 Group(pl):	X11/Programowanie/Biblioteki
 Requires:	%{name} = %{version}
 
@@ -41,6 +44,7 @@ Pliki nag³ówkowe i inne do libwmfun.
 Summary:	Static libwmfun library
 Summary(pl):	Biblioteka statyczna libwmfun
 Group:		X11/Development/Libraries
+Group(de):	X11/Entwicklung/Libraries
 Group(pl):	X11/Programowanie/Biblioteki
 Requires:	%{name}-devel = %{version}
 
@@ -54,7 +58,7 @@ Biblioteka statyczna libwmfun.
 %setup -q
 
 %build
-CFLAGS="$RPM_OPT_FLAGS -I%{_includedir}"; export CFLAGS
+CFLAGS="%{!?debug:$RPM_OPT_FLAGS}%{?debug:-O0 -g} -I%{_includedir}"
 %configure \
 	--enable-static
 %{__make}
