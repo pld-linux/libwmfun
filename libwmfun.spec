@@ -10,7 +10,7 @@ Source:		ftp://ftp.windowmaker.org/pub/beta/srcs/%{name}-%{version}.tar.gz
 BuildRequires:	XFree86-devel
 BuildRequires:	WindowMaker-devel
 Requires:	WindowMaker
-BuildRoot:   	/tmp/%{name}-%{version}-root
+BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define 	_prefix 	/usr/X11R6
 
