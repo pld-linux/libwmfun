@@ -2,16 +2,18 @@ Summary:	Library that provides function textures for WindowMaker
 Summary(pl):	Biblioteka dostarczaj±ca funkcje tekstur dla WindowMakera
 Name:		libwmfun
 Version:	0.0.2
-Release:	2
+Release:	3
+License:	GPL
 Group:		X11/Libraries
 Group(de):	X11/Libraries
 Group(es):	X11/Bibliotecas
 Group(pl):	X11/Biblioteki
-License:	GPL
 Source0:	ftp://ftp.windowmaker.org/pub/beta/srcs/%{name}-%{version}.tar.gz
 BuildRequires:	XFree86-devel
 BuildRequires:	WindowMaker-devel >= 0.63.1
-Requires:	WindowMaker
+BuildRequires:	autoconf
+BuildRequires:	automake
+BuildRequires:	libtool
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define 	_prefix 	/usr/X11R6
@@ -58,6 +60,11 @@ Biblioteka statyczna libwmfun.
 %setup -q
 
 %build
+rm -f missing
+libtoolize --copy --force
+aclocal
+autoconf
+automake -a -c
 CFLAGS="%{rpmcflags} -I%{_includedir}"
 %configure \
 	--enable-static
