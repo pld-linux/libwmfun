@@ -6,6 +6,7 @@ Release:	1
 License:	GPL
 Group:		X11/Libraries
 Source0:	ftp://ftp.windowmaker.org/pub/libs/%{name}-%{version}.tar.gz
+# Source0-md5:	af1ad49bada4b8f0df9377a133f109c4
 BuildRequires:	XFree86-devel
 BuildRequires:	WindowMaker-devel >= 0.63.1
 BuildRequires:	autoconf
