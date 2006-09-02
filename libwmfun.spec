@@ -8,8 +8,8 @@ Group:		X11/Libraries
 Source0:	ftp://ftp.windowmaker.org/pub/libs/%{name}-%{version}.tar.gz
 # Source0-md5:	af1ad49bada4b8f0df9377a133f109c4
 Patch0:		%{name}-fix.patch
-BuildRequires:	XFree86-devel
 BuildRequires:	WindowMaker-devel >= 0.63.1
+BuildRequires:	XFree86-devel
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	freetype-devel >= 2.0.0
@@ -18,13 +18,13 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
 libwmfun is a library that provides function textures for WindowMaker.
-For more info see %{_defaultdocdir}/%{name}-%{version}/README* after
+For more info see %{_docdir}/%{name}-%{version}/README* after
 installing this package.
 
 %description -l pl
 libwmfun jest bibliotek± dla WindowMakera, która wyposa¿a go w funkcje
 tworzenia tekstur. Wiêcej informacji mo¿na znale¼æ po zainstalowaniu
-tego pakietu w %{_defaultdocdir}/%{name}-%{version}/README*.
+tego pakietu w %{_docdir}/%{name}-%{version}/README*.
 
 %package devel
 Summary:	Header files etc to develop libwmfun applications
