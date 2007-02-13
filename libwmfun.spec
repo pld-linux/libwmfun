@@ -1,5 +1,5 @@
 Summary:	Library that provides function textures for WindowMaker
-Summary(pl.UTF-8):   Biblioteka dostarczająca funkcje tekstur dla WindowMakera
+Summary(pl.UTF-8):	Biblioteka dostarczająca funkcje tekstur dla WindowMakera
 Name:		libwmfun
 Version:	0.0.4
 Release:	4
@@ -28,7 +28,7 @@ tego pakietu w %{_docdir}/%{name}-%{version}/README*.
 
 %package devel
 Summary:	Header files etc to develop libwmfun applications
-Summary(pl.UTF-8):   Pliki nagłówkowe i inne do libwmfun
+Summary(pl.UTF-8):	Pliki nagłówkowe i inne do libwmfun
 Group:		X11/Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 Requires:	WindowMaker-devel >= 0.63.1
@@ -42,7 +42,7 @@ Pliki nagłówkowe i inne do libwmfun.
 
 %package static
 Summary:	Static libwmfun library
-Summary(pl.UTF-8):   Biblioteka statyczna libwmfun
+Summary(pl.UTF-8):	Biblioteka statyczna libwmfun
 Group:		X11/Development/Libraries
 Requires:	%{name}-devel = %{version}-%{release}
 
